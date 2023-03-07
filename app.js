@@ -37,29 +37,18 @@ let app;
 
 function startApp() {
   console.log('starting app');
-  const express = require('express');
-  const web = express();
-  const port = 5000
-
-  web.get('/', (req, res) => res.send('Hello World!'));
-
-  web.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-
+  
   app = new App({
     token: secret.SLACK_BOT_TOKEN,
     signingSecret: secret.SLACK_SIGNING_SECRET,
     socketMode: false,
-    appToken: '',
-    // Socket Mode doesn't listen on a port, but in case you want your app to respond to OAuth,
-    // you still need to listen on some port!
-    port: process.env.PORT || 3000
+    appToken: ''
   });
   
   (async () => {
     // Start your app
     console.log('await app')
-    await app.start();
+    await app.start(process.env.PORT || 3000);
   
     console.log('⚡️ Bolt app is running!');
   
