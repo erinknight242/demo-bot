@@ -37,7 +37,7 @@ let app;
 function startApp() {
   const express = require('express');
   const web = express();
-  const port = 3000
+  const port = 5000
 
   web.get('/', (req, res) => res.send('Hello World!'));
 
