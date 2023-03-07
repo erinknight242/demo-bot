@@ -30,11 +30,13 @@ let app;
   }
   
   secret = JSON.parse(response.SecretString);
+  console.log(secret);
   startApp();
 })();
 
 
 function startApp() {
+  console.log('starting app');
   const express = require('express');
   const web = express();
   const port = 5000
@@ -56,6 +58,7 @@ function startApp() {
   
   (async () => {
     // Start your app
+    console.log('await app')
     await app.start();
   
     console.log('⚡️ Bolt app is running!');
