@@ -16,6 +16,7 @@ let secret;
 let app;
 
 (async () => {
+  console.log("IIFE - before try");
   try {
     response = await client.send(
       new GetSecretValueCommand({
@@ -24,6 +25,8 @@ let app;
       })
     );
   } catch (error) {
+    console.log('*** In the catch');
+    console.log(error);
     // For a list of exceptions thrown, see
     // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
     throw error;
