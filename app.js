@@ -35,6 +35,15 @@ let app;
 
 
 function startApp() {
+  const express = require('express');
+  const web = express();
+  const port = 3000
+
+  web.get('/', (req, res) => res.send('Hello World!'));
+
+  web.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
   app = new App({
     token: secret.SLACK_BOT_TOKEN,
     signingSecret: secret.SLACK_SIGNING_SECRET,
